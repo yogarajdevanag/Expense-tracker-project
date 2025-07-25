@@ -1,0 +1,326 @@
+/* =================== GLOBAL STYLES =================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* =================== BODY =================== */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f6f9;
+  color: #1c1c1c;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 20px;
+}
+
+/* =================== BOX CONTAINER =================== */
+.container-box {
+  background-color: #ffffff;
+  padding: 30px 40px;
+  border-radius: 12px;
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+  text-align: center;
+}
+
+/* =================== HEADINGS =================== */
+h2, h3 {
+  text-align: center;
+  color: #003366;
+  margin-bottom: 20px;
+}
+
+/* =================== FORM STYLES =================== */
+form {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 12px;
+  width: 100%;
+}
+
+/* =================== INLINE FORM FOR EXPENSE PAGE =================== */
+.form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px;
+  justify-content: space-between;
+  margin-bottom: 30px;
+}
+
+.form-inline input,
+.form-inline select,
+.form-inline button {
+  padding: 16px;
+  border-radius: 10px;
+  border: 1px solid #003366;
+  background-color: #f0f2f5;
+  color: #000;
+  font-size: 16px;
+  flex: 1;
+  min-width: 180px;
+}
+
+/* =================== INPUTS & SELECTS =================== */
+input,
+select {
+  width: 100%;
+  padding: 16px;
+  margin-bottom: 20px;
+  background-color: #f0f2f5;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  color: #000;
+  font-size: 17px;
+}
+
+input:focus,
+select:focus {
+  outline: none;
+  border-color: #003366;
+  background-color: #e9ecef;
+  box-shadow: 0 0 0 3px rgba(0, 51, 102, 0.15);
+}
+
+/* =================== BUTTONS =================== */
+button {
+  padding: 12px;
+  background-color: #0056b3;
+  border: none;
+  border-radius: 8px;
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #004080;
+}
+
+/* Action Buttons in Table */
+td button {
+  padding: 6px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 4px;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+td button:hover {
+  opacity: 0.9;
+}
+
+button.edit-btn {
+  background-color: #007bff;
+  color: #fff;
+}
+
+button.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+}
+
+/* =================== TABLE STYLES =================== */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #ffffff;
+  margin-top: 20px;
+}
+
+thead {
+  background-color: #e9ecef;
+}
+
+th, td {
+  text-align: left;
+  padding: 12px;
+  border-bottom: 1px solid #ccc;
+}
+
+/* =================== REDIRECT LINKS =================== */
+.redirect {
+  margin-top: 15px;
+  text-align: center;
+}
+
+.redirect p {
+  color: #555;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.login-link {
+  color: #0056b3;
+  text-decoration: none;
+  padding: 6px 12px;
+  border: 1px solid #0056b3;
+  border-radius: 6px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.login-link:hover {
+  background-color: #0056b3;
+  color: #fff;
+}
+
+/* =================== PREMIUM BUTTON =================== */
+.premium-box {
+  text-align: right;
+  margin-top: 20px;
+}
+
+#buyPremium {
+  padding: 10px 20px;
+  background-color: #006400;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+#buyPremium:hover {
+  background-color: #004d00;
+}
+
+/* =================== RESPONSIVE =================== */
+@media (max-width: 600px) {
+  .form-inline {
+    flex-direction: column;
+  }
+
+  .premium-box {
+    text-align: center;
+  }
+}
+
+/* ======================================================
+   ================ UPDATED EXPENSE PAGE ================
+   Wrap your expense page content in a <div class="expense-page">
+   ====================================================== */
+.expense-page {
+  font-size: 1rem;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: #333;
+  background-color: #f9f9f9;
+  padding: 2rem 1rem;
+}
+
+/* Container box */
+.expense-page .container-box {
+  padding: 3rem;
+  max-width: 900px;
+  margin: auto;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+/* Headings */
+.expense-page h2,
+.expense-page h3 {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+}
+
+/* Form inline styling */
+.expense-page .form-inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.expense-page .form-inline input,
+.expense-page .form-inline select,
+.expense-page .form-inline button,
+.expense-page input,
+.expense-page select,
+.expense-page button {
+  font-size: 1rem;
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  outline: none;
+  transition: all 0.3s ease;
+}
+
+.expense-page .form-inline input:focus,
+.expense-page .form-inline select:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+
+/* Table */
+.expense-page table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+  background-color: #fff;
+}
+
+.expense-page table th,
+.expense-page table td {
+  font-size: 1rem;
+  padding: 1rem;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+}
+
+.expense-page table th {
+  background-color: #f0f0f0;
+}
+
+/* Buttons */
+.expense-page button,
+.expense-page #buyPremium {
+  background-color: #007bff;
+  color: white;
+  font-size: 1rem;
+  padding: 0.75rem 1.5rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.expense-page button:hover,
+.expense-page #buyPremium:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive for tablets and phones */
+@media (max-width: 768px) {
+  .expense-page .container-box {
+    padding: 2rem;
+  }
+
+  .expense-page .form-inline {
+    flex-direction: column;
+  }
+
+  .expense-page h2,
+  .expense-page h3 {
+    font-size: 1.5rem;
+  }
+
+  .expense-page table th,
+  .expense-page table td {
+    padding: 0.75rem;
+    font-size: 0.95rem;
+  }
+
+  .expense-page button {
+    width: 100%;
+  }
+}

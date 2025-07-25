@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Premium Dashboard</title>
+  <link rel="stylesheet" href="premium-dashboard.css" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 20px;
+      background-color: #f9f9f9;
+      color: #333;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+
+    #premium-message {
+      text-align: center;
+      background-color: #d1f7c4;
+      border: 1px solid #27ae60;
+      color: #2d7a3b;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 30px;
+    }
+
+    .dashboard-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      justify-content: space-between;
+    }
+
+    .section {
+      flex: 1 1 300px;
+      background-color: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+      transition: transform 0.2s;
+    }
+
+    .section:hover {
+      transform: translateY(-3px);
+    }
+
+    h2 {
+      margin-top: 0;
+      color: #34495e;
+      font-size: 20px;
+    }
+
+    form input,
+    form select {
+      padding: 10px;
+      margin: 5px 5px 10px 0;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      width: calc(50% - 12px);
+    }
+
+    form button,
+    button {
+      padding: 10px 16px;
+      margin: 5px 5px 0 0;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    form button:hover,
+    button:hover {
+      background-color: #2980b9;
+    }
+
+    button:disabled {
+      background-color: #bdc3c7;
+      cursor: not-allowed;
+    }
+
+    /* Expense List */
+    #expense-list {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    #expense-list li {
+      margin: 8px 0;
+      padding: 10px 14px;
+      background-color: #f2f2f2;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .expense-text {
+      font-size: 1rem;
+      flex: 1;
+    }
+
+    .expense-actions {
+      display: flex;
+      gap: 8px;
+      margin-top: 6px;
+    }
+
+    .expense-actions button {
+      padding: 6px 12px;
+      font-size: 0.85rem;
+    }
+
+    .inline-controls {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 10px;
+    }
+
+    select {
+      padding: 8px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+
+    #page-info {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🎉 You are a Premium User</h1>
+  <div id="premium-message">✅ Welcome, Premium User</div>
+
+  <div class="dashboard-container">
+
+    <!-- Add Expense -->
+    <div class="section">
+      <h2>Add Expense</h2>
+      <form id="expense-form">
+        <input type="number" id="amount" placeholder="Amount" required>
+        <input type="text" id="description" placeholder="Description" required>
+        <select id="category" required>
+          <option value="">-- Select Category --</option>
+          <option value="Food">Food</option>
+          <option value="Travel">Travel</option>
+          <option value="Entertainment">Entertainment</option>
+          <option value="Other">Other</option>
+        </select>
+        <button type="submit">Add Expense</button>
+      </form>
+    </div>
+
+    <!-- Expense List -->
+    <div class="section">
+      <h2>Your Expenses</h2>
+      <ul id="expense-list">
+        <!-- Example Static Entry (you'll populate dynamically) -->
+        <li>
+          <span class="expense-text">₹250 - Lunch (Food)</span>
+          <div class="expense-actions">
+            <button>Edit</button>
+            <button>Delete</button>
+          </div>
+        </li>
+      </ul>
+
+      <div class="inline-controls" style="margin-top: 15px;">
+        <label for="per-page">Rows per page:</label>
+        <select id="per-page">
+          <option value="5">5</option>
+          <option value="10" selected>10</option>
+          <option value="25">25</option>
+          <option value="50">50</option>
+        </select>
+      </div>
+
+      <div class="inline-controls" style="margin-top: 15px;">
+        <button id="prev-page">⬅ Prev</button>
+        <span id="page-info">Page 1</span>
+        <button id="next-page">Next ➡</button>
+      </div>
+    </div>
+
+    <!-- Filter / Download -->
+    <div class="section">
+      <h2>📅 Filter / Download</h2>
+      <div class="inline-controls">
+        <select id="filter-type">
+          <option value="">-- Filter By --</option>
+          <option value="daily">Daily</option>
+          <option value="weekly">Weekly</option>
+          <option value="monthly">Monthly</option>
+        </select>
+        <button id="filter-btn">Filter</button>
+        <button id="download-btn">Download</button>
+      </div>
+    </div>
+
+    <!-- Leaderboard -->
+    <div class="section">
+      <h2>🏆 Leaderboard</h2>
+      <button id="leaderboard-btn">View Leaderboard</button>
+      <div id="leaderboard"></div>
+    </div>
+
+    <!-- Day to Day Expenses -->
+    <div class="section" id="day-expenses-section" style="display: none;">
+      <h2>📅 Day to Day Expenses</h2>
+      <div class="inline-controls">
+        <button onclick="showExpenses('daily')">Daily</button>
+        <button onclick="showExpenses('weekly')">Weekly</button>
+        <button onclick="showExpenses('monthly')">Monthly</button>
+        <button id="download-btn" disabled>Download Report</button>
+      </div>
+      <div id="expenses-report" style="margin-top: 15px;"></div>
+    </div>
+
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="premium-dashboard.js"></script>
+</body>
+</html>
